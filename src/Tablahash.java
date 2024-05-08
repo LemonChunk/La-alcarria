@@ -13,7 +13,21 @@ public class Tablahash {
         this.numElementos=0;
         this.factorCarga=0;
     }
-
+    public boolean revisarCodigo(String codigo){
+        Dispersion disper = new Dispersion();
+        double codigoDescifrado= disper.descifrarClave(codigo);
+        int indiceHash= disper.dispersar(codigoDescifrado, M);
+        if (tabla[indiceHash]== null){
+            return true;
+        }
+        else{
+            if(tabla[indiceHash].codigo.equals(codigo)){
+                System.out.println("El codigo ingresado está en uso");
+                return false;
+            }
+        }
+        return true;
+    }
     public int solucionarColision(String codigoAsolucionar, int indice){
         int i=0;
         while (tabla[indice]!= null &&(tabla[indice].codigo.equals(codigoAsolucionar))){
