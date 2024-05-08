@@ -26,8 +26,10 @@ variable factorCarga, de tal forma que cuando se alcance el 0.5 se pueda generar
         String codigo, poblacion, direccion;
         double precio, codigoDescifrado;
         int numHabitacion, indicehash;
-        System.out.println("Ingrese el codigo de la casa (Dato unívoco)");
-        codigo=ingreso.nextLine();
+        do{
+            System.out.println("Ingrese el codigo de la casa (Dato unívoco)");
+            codigo=ingreso.nextLine();
+        }while(!tabla.revisarCodigo(codigo));
 
         System.out.println("Ingrese la población de la casa");
         poblacion=ingreso.nextLine();
